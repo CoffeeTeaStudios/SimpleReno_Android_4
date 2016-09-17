@@ -3,6 +3,7 @@ package lawonga.simplereno_4.ui;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -21,6 +22,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import lawonga.simplereno_4.R;
+import lawonga.simplereno_4.helper.PreferencesHelper;
+import lawonga.simplereno_4.model.enums.Key;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -159,8 +162,23 @@ public class LoginActivity extends AppCompatActivity {
             showProgress(true);
 
             // Start next activity
-            // TODO start
+            login();
         }
+    }
+
+    /**
+     * Perform login here
+     */
+    private void login() {
+        PreferencesHelper preferencesHelper = PreferencesHelper.initInstance(getApplicationContext());
+        Intent intent = null;
+        if (preferencesHelper.getBoolean(Key.CONTRACTOR)) {
+            intent = new Intent(this, ContractorActivity.class);
+        } else {
+            // Default goes to customer side
+            intent = new Intent(this, CustomerActivity.class);
+        }
+        startActivity(intent);
     }
 
     private boolean isEmailValid(String email) {
