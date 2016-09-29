@@ -7,4 +7,7 @@ import lawonga.simplereno_4.base.BaseFragment;
  * A shared fragment that is reused. This is the profile of the bidder, and contains information about the bid
  */
 public class ProfileFragment extends BaseFragment{
+
+
+
 }

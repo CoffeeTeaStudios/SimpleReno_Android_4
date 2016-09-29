@@ -179,6 +179,7 @@ public class LoginActivity extends AppCompatActivity {
             intent = new Intent(this, CustomerActivity.class);
         }
         startActivity(intent);
+        finish();
     }
 
     private boolean isEmailValid(String email) {
@@ -186,7 +187,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean isPasswordValid(String password) {
-        return password.length() > 7;
+        return password.length() > 6;
     }
 
     /**

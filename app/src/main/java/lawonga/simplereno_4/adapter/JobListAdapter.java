@@ -2,6 +2,7 @@ package lawonga.simplereno_4.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -14,16 +15,17 @@ import lawonga.simplereno_4.model.JobModel;
  */
 public class JobListAdapter extends RecyclerView.Adapter<JobListAdapter.ViewHolder> {
 
-    Context context;
+    private Context context;
     ArrayList<JobModel> jobObjects;
 
-    public JobListAdapter(Context context, ArrayList<JobModel> jobObjects) {
-        this.context = context;
+    public JobListAdapter(ArrayList<JobModel> jobObjects) {
         this.jobObjects = jobObjects;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        context = parent.getContext();
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = null;
 //        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_layout, parent, false);
         return new ViewHolder(view);
